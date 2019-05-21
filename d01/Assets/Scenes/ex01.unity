@@ -775,6 +775,8 @@ MonoBehaviour:
   end1: {fileID: 2131048953}
   end2: {fileID: 391707589}
   end3: {fileID: 1884421285}
+  loadSceneOnWin: 1
+  sceneToLoadOnWin: ex02
 --- !u!1 &1447702238 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1379068219935474, guid: 39e32c91f277a4c2782ddf8c9d28e67e,
