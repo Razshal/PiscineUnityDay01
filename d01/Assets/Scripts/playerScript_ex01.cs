@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerScript_ex00 : MonoBehaviour
-{
+public class playerScript_ex01 : MonoBehaviour {
     public bool isSelected = false;
     public bool isGrounded = true;
     public float speed = 0.05f;
@@ -18,10 +17,18 @@ public class playerScript_ex00 : MonoBehaviour
         rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        string colliderTag = collision.gameObject.tag;
+        if (colliderTag == "Ground" || colliderTag == "Player")
             isGrounded = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        string colliderTag = collision.gameObject.tag;
+        if (colliderTag == "Ground" || colliderTag == "Player")
+            isGrounded = false;
     }
 
     void SelectCharacter()
@@ -51,8 +58,11 @@ public class playerScript_ex00 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
                 rigidbody2D.AddForce(new Vector2(0, 1) * jumpSpeed, ForceMode2D.Force);
-                isGrounded = false;
             }
+        }
+        else
+        {
+            gameObject.transform.Translate(0, 0, 0);
         }
     }
 }
