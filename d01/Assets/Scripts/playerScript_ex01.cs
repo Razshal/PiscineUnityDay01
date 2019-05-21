@@ -51,18 +51,12 @@ public class playerScript_ex01 : MonoBehaviour {
         if (isSelected)
         {
             rigidbody2D.velocity *= 0.99f;
-            if (Input.GetKey(KeyCode.RightArrow))
-                gameObject.transform.Translate(speed, 0, 0);
-            if (Input.GetKey(KeyCode.LeftArrow))
-                gameObject.transform.Translate(-speed, 0, 0);
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+                gameObject.transform.Translate(Input.GetAxis("Horizontal") * speed, 0, 0);
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
                 rigidbody2D.AddForce(new Vector2(0, 1) * jumpSpeed, ForceMode2D.Force);
             }
-        }
-        else
-        {
-            gameObject.transform.Translate(0, 0, 0);
         }
     }
 }
