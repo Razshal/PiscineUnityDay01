@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class buttonScript : MonoBehaviour {
     public GameObject door;
+    public bool isRestricted = false;
+    public GameObject player;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(door);
+        if (!isRestricted || collision.gameObject == player)
+            Destroy(door);
     }
 }
