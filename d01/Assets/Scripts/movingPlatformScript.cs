@@ -5,7 +5,7 @@ using UnityEngine;
 public class movingPlatformScript : MonoBehaviour {
 
     public float speed = 0.05f;
-    public bool moveToTheLeft = true;
+    public bool moveToTheRight = true;
     public GameObject delimiter1;
     public GameObject delimiter2;
 
@@ -24,10 +24,10 @@ public class movingPlatformScript : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
         if (collision.gameObject.tag == "Delimiter")
-            moveToTheLeft = !moveToTheLeft;
+            moveToTheRight = !moveToTheRight;
 	}
 
 	void Update () {
-        gameObject.transform.Translate(moveToTheLeft ? speed : -speed, 0, 0);
+        gameObject.transform.Translate(moveToTheRight ? speed : -speed, 0, 0);
 	}
 }
