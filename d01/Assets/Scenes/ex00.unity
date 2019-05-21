@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d51e2523c1d24ad39b643f89491de6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSelected: 0
+  isSelected: 1
   isGrounded: 1
   speed: 0.05
   jumpSpeed: 200

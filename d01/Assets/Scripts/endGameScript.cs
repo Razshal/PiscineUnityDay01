@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class endGameScript : MonoBehaviour {
     public GameObject end1;
     public GameObject end2;
     public GameObject end3;
     private bool playerWin = false;
+    public bool loadSceneOnWin = false;
+    public Scene sceneToLoadOnWin;
 
     // Update is called once per frame
     void Update()
@@ -18,6 +21,8 @@ public class endGameScript : MonoBehaviour {
         {
             Debug.Log("You win");
             playerWin = true;
+            if (loadSceneOnWin)
+                SceneManager.LoadScene(sceneToLoadOnWin.name);
         }
     }
 }
