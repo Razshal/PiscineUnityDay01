@@ -5,9 +5,8 @@ using UnityEngine;
 public class movingPlatformScript : MonoBehaviour {
 
     public float speed = 0.05f;
-    public bool moveToTheRight = true;
-    public GameObject delimiter1;
-    public GameObject delimiter2;
+    public float secondsBeforeChangingDirection = 2;
+    public float timer;
 
 	private void OnCollisionStay2D(Collision2D collision)
 	{
@@ -21,13 +20,18 @@ public class movingPlatformScript : MonoBehaviour {
             collision.gameObject.transform.parent = null;
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
+	void Start()
 	{
-        if (collision.gameObject.tag == "Delimiter")
-            moveToTheRight = !moveToTheRight;
+        timer = secondsBeforeChangingDirection;
 	}
 
 	void Update () {
-        gameObject.transform.Translate(moveToTheRight ? speed : -speed, 0, 0);
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            timer = secondsBeforeChangingDirection;
+            speed = -speed;
+        }
+        gameObject.transform.Translate(speed, 0, 0);
 	}
 }
