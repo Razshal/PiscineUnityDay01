@@ -9,7 +9,7 @@ public class endGameScript : MonoBehaviour {
     public GameObject end3;
     private bool playerWin = false;
     public bool loadSceneOnWin = false;
-    public Scene sceneToLoadOnWin;
+    public string sceneToLoadOnWin = "ex01";
 
     // Update is called once per frame
     void Update()
@@ -22,7 +22,7 @@ public class endGameScript : MonoBehaviour {
             Debug.Log("You win");
             playerWin = true;
             if (loadSceneOnWin)
-                SceneManager.LoadScene(sceneToLoadOnWin.name);
+                SceneManager.LoadScene(sceneToLoadOnWin);
         }
     }
 }
